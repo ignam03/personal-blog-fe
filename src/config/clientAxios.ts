@@ -7,5 +7,5 @@ const API = {
 
 export const clientAxios = axios.create({
   baseURL: API.dev,
-  withCredentials: true
+  withCredentials: true,
 })

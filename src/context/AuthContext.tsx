@@ -1,6 +1,11 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { RegisterType } from "../types/registerType";
-import { loginRequest, meRequest, registerRequest } from "../api/auth";
+import {
+  loginRequest,
+  logoutRequest,
+  meRequest,
+  registerRequest,
+} from "../api/auth";
 import { clientAxios } from "../config/clientAxios";
 import { LoginType } from "../types/loginType";
 
@@ -35,7 +40,7 @@ export const authContext = createContext<contextAth>({
   logout: () => {},
   user: {
     firstName: "",
-    username: "",
+    userName: "",
     email: "",
     password: "",
   },
@@ -84,10 +89,17 @@ export const AuthProvider = ({ children }: Props) => {
 
   const logout = async () => {
     try {
-      //const res = await logout();
-      //console.log(res);
+      // const token = localStorage.getItem("token");
+      // const config = {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // };
+      //const res = await logoutRequest(config);
       localStorage.removeItem("token");
       setUser(null);
+      setIsAuthenticated(false);
     } catch (error) {
       console.error(error);
       setUser(null);

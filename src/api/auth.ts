@@ -11,7 +11,8 @@ export const registerRequest = (user: RegisterType) =>
   clientAxios.post(`${API.dev}/auth/signup`, user);
 export const loginRequest = (user: LoginType) =>
   clientAxios.post(`${API.dev}/auth/login`, user);
-export const logoutRequest = () => clientAxios.post(`${API.dev}/auth/logout`);
+export const logoutRequest = (config: { headers: { Authorization: string } }) =>
+  clientAxios.get(`${API.dev}/auth/logout`, config);
 export const meRequest = (config: { headers: { Authorization: string } }) =>
   clientAxios.get(`${API.dev}/users/my-profile`, config);
 export const logout = () => clientAxios.post(`${API.dev}/auth/logout`);

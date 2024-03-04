@@ -5,8 +5,10 @@ import {
   deleteArticleRequest,
   fetchArticleRequest,
   fetchArticlesRequest,
+  fetchMyArticlesRequest,
   updateArticleRequest,
 } from "../api/articles";
+import { useNotification } from "./NotificationContext";
 
 type contextArticle = {
   saveArticle: (article: ArticleType) => article;
@@ -14,6 +16,7 @@ type contextArticle = {
   fetchArticle: (id: number) => article | null;
   deleteArticle: (id: number) => void;
   updateArticle: (id: number, article: ArticleType) => void;
+  fetchMyArticles: () => void;
   articles: [] | ArticleType[];
   article: ArticleType | null;
 };
@@ -28,6 +31,7 @@ const ArticleContext = createContext<contextArticle>({
   fetchArticle: (id: number) => {},
   deleteArticle: (id: number) => {},
   updateArticle: (id: number, article: ArticleType) => {},
+  fetchMyArticles: () => {},
   articles: [],
   article: null,
 });
@@ -43,6 +47,7 @@ export const useArticle = () => {
 export const ArticleProvider = ({ children }: Props) => {
   const [articles, setArticles] = useState([]);
   const [article, setArticle] = useState(null);
+  const { getError, getSuccess } = useNotification();
 
   const saveArticle = async (article: ArticleType) => {
     try {
@@ -66,17 +71,17 @@ export const ArticleProvider = ({ children }: Props) => {
 
   const fetchArticles = async () => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        return;
-      }
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const res = await fetchArticlesRequest(config);
+      // const token = localStorage.getItem("token");
+      // if (!token) {
+      //   return;
+      // }
+      // const config = {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // };
+      const res = await fetchArticlesRequest();
       setArticles(res.data);
     } catch (error) {
       console.log(error);
@@ -102,6 +107,22 @@ export const ArticleProvider = ({ children }: Props) => {
     }
   };
 
+  const fetchMyArticles = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const res = await fetchMyArticlesRequest(config);
+      if (res.status === 200) setArticles(res.data);
+    } catch (error) {
+      setArticles([]);
+    }
+  };
+
   const deleteArticle = async (id: number) => {
     try {
       const token = localStorage.getItem("token");
@@ -114,8 +135,10 @@ export const ArticleProvider = ({ children }: Props) => {
       const res = await deleteArticleRequest(id, config);
       if (res.status === 200)
         setArticles(articles.filter((article) => article.id !== id));
-    } catch (error) {
+      getSuccess(res.data.message);
+    } catch (error: any) {
       console.log(error);
+      getError(error.response.data.message);
     }
   };
 
@@ -136,19 +159,18 @@ export const ArticleProvider = ({ children }: Props) => {
     }
   };
 
+  const values = {
+    saveArticle,
+    articles,
+    fetchArticles,
+    fetchArticle,
+    fetchMyArticles,
+    deleteArticle,
+    updateArticle,
+    article,
+  };
+
   return (
-    <ArticleContext.Provider
-      value={{
-        saveArticle,
-        articles,
-        fetchArticles,
-        fetchArticle,
-        deleteArticle,
-        updateArticle,
-        article,
-      }}
-    >
-      {children}
-    </ArticleContext.Provider>
+    <ArticleContext.Provider value={values}>{children}</ArticleContext.Provider>
   );
 };
