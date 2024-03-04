@@ -3,5 +3,5 @@ export interface RegisterType {
   userName: string;
   email: string;
   password: string;
+  profileImage?: string;
 }
-

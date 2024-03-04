@@ -1,38 +1,56 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
-import { ArticlePage } from "./pages/ArticlesPage/ArticlesPage";
+import { ArticlesPage } from "./pages/ArticlesPage/ArticlesPage";
 import { ArticlesFormPage } from "./pages/ArticleFormPage/ArticleFormPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { HomePage } from "./pages/HomePage";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { ArticleProvider } from "./context/ArticleContext";
 import { Navbar } from "./components/navbar/navbar";
+import { MyArticles } from "./pages/MyArticles/MyArticles";
+import { ContactPage } from "./pages/ContactPage/ContactPage";
+import { AboutPage } from "./pages/AboutPage/AboutPage";
+import { NotificationProvider } from "./context/NotificationContext";
+import { ArticlePage } from "./pages/ArticlePage/ArticlePage";
+import { CommentProvider } from "./context/CommentContext";
+import { NotFoundPage } from "./pages/404/NotFoundPage";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <main className="container mx-auto px-10">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-          </Routes>
-          <ArticleProvider>
+      <NotificationProvider>
+        <BrowserRouter>
+          <main className="container mx-auto px-10">
+            <Navbar />
             <Routes>
-              <Route element={<ProtectedRoute />}>
-                <Route path="/articles" element={<ArticlePage />} />
-                <Route path="/add-article" element={<ArticlesFormPage />} />
-                <Route path="/article/:id" element={<ArticlesFormPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-              </Route>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/about" element={<AboutPage />}></Route>
+              <Route path="/contact" element={<ContactPage />}></Route>
             </Routes>
-          </ArticleProvider>
-        </main>
-      </BrowserRouter>
+            <ArticleProvider>
+              <CommentProvider>
+                <Routes>
+                  <Route path="/articles" element={<ArticlesPage />} />
+                  <Route path="/article/:id" element={<ArticlePage />}></Route>
+                  <Route element={<ProtectedRoute />}>
+                    <Route path="/my-articles" element={<MyArticles />}></Route>
+                    <Route path="/add-article" element={<ArticlesFormPage />} />
+                    <Route
+                      path="/edit-article/:id"
+                      element={<ArticlesFormPage />}
+                    />
+                    <Route path="/my-profile" element={<ProfilePage />} />
+                  </Route>
+                </Routes>
+              </CommentProvider>
+            </ArticleProvider>
+          </main>
+        </BrowserRouter>
+      </NotificationProvider>
     </AuthProvider>
   );
 }

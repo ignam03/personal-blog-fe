@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import { useArticle } from "../../context/ArticleContext";
-import { PostImageCard } from "../../components/postImageCard/PostImageCard";
 import { Button } from "../../components/button/button";
+import { PostImageCard } from "../../components/postImageCard/PostImageCard";
 
-export const ArticlesPage = () => {
-  const { fetchArticles, articles } = useArticle()
+export const MyArticles = () => {
+  const { fetchMyArticles, articles } = useArticle();
   useEffect(() => {
-    fetchArticles();
+    fetchMyArticles();
   }, []);
   return (
     <section className="m-auto flex w-full max-w-screen-2xl flex-col gap-12 px-6 py-12 md:px-16 2xl:px-32 2xl:py-16">
       <div className="flex justify-between">
         <h3 className="text-4xl text-black font-semibold text-slate-950">
-          All Articles
+          My Articles
         </h3>
         <Button size="large">See More</Button>
       </div>
