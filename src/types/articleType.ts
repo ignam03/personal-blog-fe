@@ -4,4 +4,5 @@ export interface ArticleType {
   description: string;
   articleImage?: string;
   comments?: any;
+  user: any;
 }

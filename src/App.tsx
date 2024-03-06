@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
@@ -8,14 +8,13 @@ import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { HomePage } from "./pages/HomePage";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { ArticleProvider } from "./context/ArticleContext";
-import { Navbar } from "./components/navbar/navbar";
-import { MyArticles } from "./pages/MyArticles/MyArticles";
 import { ContactPage } from "./pages/ContactPage/ContactPage";
 import { AboutPage } from "./pages/AboutPage/AboutPage";
 import { NotificationProvider } from "./context/NotificationContext";
 import { ArticlePage } from "./pages/ArticlePage/ArticlePage";
 import { CommentProvider } from "./context/CommentContext";
-import { NotFoundPage } from "./pages/404/NotFoundPage";
+import { MyArticles } from "./pages/MyArticles/MyArticles";
+import { Navbar } from "./components/navbar/Navbar";
 
 function App() {
   return (

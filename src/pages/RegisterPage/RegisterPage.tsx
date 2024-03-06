@@ -9,6 +9,9 @@ type IRegister = {
   email: string;
   password: string;
 };
+type SignUpErrorsType = {
+  message: string;
+};
 export const RegisterPage = () => {
   const {
     register,
@@ -41,7 +44,7 @@ export const RegisterPage = () => {
           </h2>
           {SignUpErrors && (
             <p className="bg-red-400 text-center p-2 my-2 text-white-500 rounded-md">
-              {SignUpErrors.message}
+              {(SignUpErrors as SignUpErrorsType).message}
             </p>
           )}
         </div>

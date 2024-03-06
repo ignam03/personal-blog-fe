@@ -1,5 +1,4 @@
 import React from "react";
-import { AlterColor } from "../../types/AlterColor";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 

@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useArticle } from "../../context/ArticleContext";
 import { useNavigate, useParams } from "react-router-dom";
 
-type IArticle = {
+interface IArticle {
   id: number;
   title: string;
   description: string;
   articleImage?: string;
   comments?: [];
-};
+  user: any;
+}
 
 export const ArticlesFormPage = () => {
   const {
@@ -17,7 +18,7 @@ export const ArticlesFormPage = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm();
+  } = useForm<IArticle>();
   const navigate = useNavigate();
   const params = useParams();
   const { saveArticle, fetchArticle, article, updateArticle } = useArticle();
@@ -25,9 +26,10 @@ export const ArticlesFormPage = () => {
   useEffect(() => {
     const loadArticle = async () => {
       if (params.id) {
-        const article = await fetchArticle(Number(params.id));
-        setValue("title", article?.title);
-        setValue("description", article?.description);
+        await fetchArticle(Number(params.id));
+        setValue("title", article?.title ?? "");
+        setValue("description", article?.description ?? "");
+        setValue("articleImage", article?.articleImage ?? "");
       }
     };
     loadArticle();
@@ -38,6 +40,7 @@ export const ArticlesFormPage = () => {
       updateArticle(Number(params.id), data);
       navigate("/articles");
     } else {
+      console.log("data", data);
       saveArticle(data);
       navigate("/articles");
     }

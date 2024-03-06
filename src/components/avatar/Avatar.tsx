@@ -111,7 +111,7 @@ export interface AvatarVariants
   text?: string;
 }
 
-type Type = { src: string } | { icon: ReactNode } | { text: string };
+type Type = { src: string } | { icon: ReactNode } | { text?: string };
 
 export type AvatarProps = (HTMLAttributes<HTMLDivElement> & AvatarVariants) &
   Type & {

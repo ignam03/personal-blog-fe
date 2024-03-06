@@ -1,4 +1,3 @@
-import React from "react";
 import { useComment } from "../../context/CommentContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
@@ -15,7 +14,7 @@ export const CommentBox = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<IComment>();
   const onSubmit: SubmitHandler<IComment> = (data) => {
     createComment({
       ...data,
@@ -32,7 +31,7 @@ export const CommentBox = () => {
             <textarea
               id="OrderNotes"
               className="w-full resize-none border-x-0 border-t-0 rounded-md border-gray-200 px-0 align-top sm:text-sm"
-              rows="4"
+              rows={4}
               placeholder="Comment..."
               {...register("content", {
                 required: true,

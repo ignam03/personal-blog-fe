@@ -7,6 +7,9 @@ type ILogin = {
   username: string;
   password: string;
 };
+type SignInErrorsType = {
+  message: string;
+};
 export const LoginPage = () => {
   const {
     register,
@@ -37,7 +40,7 @@ export const LoginPage = () => {
           </h2>
           {SignInErrors && (
             <p className="bg-red-400 text-center p-2 my-2 text-white-500 rounded-md">
-              {SignInErrors.message}
+              {(SignInErrors as SignInErrorsType).message}
             </p>
           )}
         </div>

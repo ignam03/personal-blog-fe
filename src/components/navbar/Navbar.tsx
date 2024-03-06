@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { Dropdown } from "../dropdown/dropdown";
-import { Button } from "../button/button";
-import { Avatar } from "../avatar/avatar";
+import { Dropdown } from "../dropdown/Dropdown";
+import { Avatar } from "../avatar/Avatar";
+import { Button } from "../button/Button";
 
 export const Navbar = () => {
   const { isAuthenticated, user } = useAuth();
@@ -11,29 +11,6 @@ export const Navbar = () => {
     return <h1 className="text-2xl font-bold text-black">Blog Dev</h1>;
   };
 
-  function FooterColumn() {
-    return (
-      <div className="flex flex-col">
-        <p className="mb-4 text-sm font-semibold leading-tight text-blue-950">
-          Column
-        </p>
-        <div className="flex flex-col gap-4">
-          <a href="/" className="text-sm leading-tight text-slate-500">
-            Footer Link
-          </a>
-          <a href="/" className="text-sm leading-tight text-slate-500">
-            Footer Link
-          </a>
-          <a href="/" className="text-sm leading-tight text-slate-500">
-            Footer Link
-          </a>
-          <a href="/" className="text-sm leading-tight text-slate-500">
-            Footer Link
-          </a>
-        </div>
-      </div>
-    );
-  }
   return (
     <>
       {isAuthenticated ? (
@@ -77,7 +54,7 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="flex flex-1 items-center justify-end gap-4">
-            <Avatar size="small" elevated src={user?.profileImage} />
+            <Avatar elevated src={user?.profileImage} />
             <span className="hidden text-sm font-semibold md:inline text-black">
               {user?.userName}
             </span>

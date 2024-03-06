@@ -1,8 +1,7 @@
 import { PostDetails } from "../postDetails/PostDetails";
 import { useArticle } from "../../context/ArticleContext";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../button/button";
-import { useNotification } from "../../context/NotificationContext";
+import { Button } from "../button/Button";
 import { useAuth } from "../../context/AuthContext";
 
 type IArticleType = {
@@ -10,6 +9,7 @@ type IArticleType = {
   title: string;
   description: string;
   articleImage?: string;
+  user: any;
 };
 
 export const PostImageCard = ({ article }: { article: IArticleType }) => {
@@ -29,7 +29,7 @@ export const PostImageCard = ({ article }: { article: IArticleType }) => {
         />
       </div>
       <div className="flex flex-col items-start gap-3">
-        <PostDetails />
+        <PostDetails user={article.user} />
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl font-semibold">{article.title}</h3>
           <h4 className="max-w-[90%] text-sm leading-tight text-slate-400">
