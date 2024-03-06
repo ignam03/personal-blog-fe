@@ -11,9 +11,9 @@ import {
 import { useNotification } from "./NotificationContext";
 
 type contextArticle = {
-  saveArticle: (article: ArticleType) => article;
+  saveArticle: (article: ArticleType) => void;
   fetchArticles: () => void;
-  fetchArticle: (id: number) => article | null;
+  fetchArticle: (id: number) => void;
   deleteArticle: (id: number) => void;
   updateArticle: (id: number, article: ArticleType) => void;
   fetchMyArticles: () => void;
@@ -25,16 +25,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const ArticleContext = createContext<contextArticle>({
-  saveArticle: (article: ArticleType) => article,
-  fetchArticles: () => {},
-  fetchArticle: (id: number) => {},
-  deleteArticle: (id: number) => {},
-  updateArticle: (id: number, article: ArticleType) => {},
-  fetchMyArticles: () => {},
-  articles: [],
-  article: null,
-});
+const ArticleContext = createContext<contextArticle | null>(null);
 
 export const useArticle = () => {
   const context = useContext(ArticleContext);
@@ -45,7 +36,7 @@ export const useArticle = () => {
 };
 
 export const ArticleProvider = ({ children }: Props) => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<ArticleType[]>([]);
   const [article, setArticle] = useState(null);
   const { getError, getSuccess } = useNotification();
 
@@ -63,9 +54,11 @@ export const ArticleProvider = ({ children }: Props) => {
       };
       const res = await createArticle(article, config);
       setArticle(res.data);
+      getSuccess("Article created successfully");
     } catch (error) {
       console.log(error);
       setArticle(null);
+      getError("Error creating article");
     }
   };
 

@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UserState {
   id: number;
-  username?: string;
+  username: string;
   email: string;
   firstName?: string;
   lastName?: string;
@@ -35,8 +35,10 @@ export const userSlice = createSlice({
       }
     },
     setUser: (state, action: PayloadAction<UserState>) => {
-      return action.payload;
-    },
+      state.id = action.payload.id;
+      state.username = action.payload.username;
+      // ... update other properties similarly
+    }
   },
 });
 

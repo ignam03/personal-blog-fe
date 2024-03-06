@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useArticle } from "../../context/ArticleContext";
 import { useParams } from "react-router-dom";
-import { CommentCard } from "../../components/commentCard/commentCard";
 import { CommentBox } from "../../components/commentBox/CommentBox";
 import { useComment } from "../../context/CommentContext";
+import { CommentCard } from "../../components/commentCard/CommentCard";
 
 export const ArticlePage = () => {
   const { fetchArticle, article } = useArticle();
@@ -38,9 +38,7 @@ export const ArticlePage = () => {
                       {article?.title}
                     </h2>
 
-                    <p className="mt-4 text-gray-600">
-                      {article?.description}
-                    </p>
+                    <p className="mt-4 text-gray-600">{article?.description}</p>
 
                     <a
                       href="#"

@@ -6,14 +6,12 @@ import {
   deleteCommentRequest,
   fetchCommentsByArticleRequest,
 } from "../api/comment";
-import { useArticle } from "./ArticleContext";
-import { useSearchParams } from "react-router-dom";
 
 type CommentTypeProps = {
   createComment: (comment: CommentType) => void;
   deleteComment: (id: number) => void;
   fetchCommentsByArticle: (id: number) => void;
-  comments: [];
+  comments: CommentType[];
 };
 
 type Props = {
@@ -33,6 +31,7 @@ export const useComment = () => {
 export const CommentProvider = ({ children }: Props) => {
   const { getError, getSuccess } = useNotification();
   const [comments, setComments] = useState<CommentType[]>([]);
+
   const createComment = async (comment: CommentType) => {
     try {
       const token = localStorage.getItem("token");
