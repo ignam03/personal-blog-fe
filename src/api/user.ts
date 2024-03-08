@@ -12,3 +12,15 @@ export const fetchMyProfileRequest = async () => {
   const res = await clientAxios.get(`/users/my-profile`, config);
   return res.data;
 };
+export const updateMyProfileRequest = async (data: any) => {
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const res = await clientAxios.patch(`/users/my-profile`, data, config);
+  console.log(res);
+  return res;
+};

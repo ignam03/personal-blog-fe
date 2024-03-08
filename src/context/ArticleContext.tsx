@@ -12,14 +12,23 @@ import { useNotification } from "./NotificationContext";
 
 type contextArticle = {
   saveArticle: (article: ArticleType) => void;
-  fetchArticles: () => void;
+  fetchArticles: (limit?: number) => void;
   fetchArticle: (id: number) => void;
   deleteArticle: (id: number) => void;
   updateArticle: (id: number, article: ArticleType) => void;
   fetchMyArticles: () => void;
   articles: [] | ArticleType[];
   article: ArticleType | null;
+  totalComments: number;
 };
+
+interface ErrorCustom {
+  response: {
+    data: {
+      message: string;
+    };
+  };
+}
 
 type Props = {
   children: React.ReactNode;
@@ -39,6 +48,7 @@ export const ArticleProvider = ({ children }: Props) => {
   const [articles, setArticles] = useState<ArticleType[]>([]);
   const [article, setArticle] = useState(null);
   const { getError, getSuccess } = useNotification();
+  const [totalComments, setTotalComments] = useState(0);
 
   const saveArticle = async (article: ArticleType) => {
     try {
@@ -62,7 +72,7 @@ export const ArticleProvider = ({ children }: Props) => {
     }
   };
 
-  const fetchArticles = async () => {
+  const fetchArticles = async (limit?: number) => {
     try {
       // const token = localStorage.getItem("token");
       // if (!token) {
@@ -74,7 +84,7 @@ export const ArticleProvider = ({ children }: Props) => {
       //     Authorization: `Bearer ${token}`,
       //   },
       // };
-      const res = await fetchArticlesRequest();
+      const res = await fetchArticlesRequest(limit);
       setArticles(res.data);
     } catch (error) {
       console.log(error);
@@ -111,6 +121,14 @@ export const ArticleProvider = ({ children }: Props) => {
       };
       const res = await fetchMyArticlesRequest(config);
       if (res.status === 200) setArticles(res.data);
+      const totalComments = () => {
+        let total = 0;
+        res.data.forEach((article: ArticleType) => {
+          total += article.comments.length;
+        });
+        return total;
+      };
+      setTotalComments(totalComments());
     } catch (error) {
       setArticles([]);
     }
@@ -129,7 +147,7 @@ export const ArticleProvider = ({ children }: Props) => {
       if (res.status === 200)
         setArticles(articles.filter((article) => article.id !== id));
       getSuccess(res.data.message);
-    } catch (error: any) {
+    } catch (error: ErrorCustom | any) {
       console.log(error);
       getError(error.response.data.message);
     }
@@ -161,6 +179,7 @@ export const ArticleProvider = ({ children }: Props) => {
     deleteArticle,
     updateArticle,
     article,
+    totalComments,
   };
 
   return (

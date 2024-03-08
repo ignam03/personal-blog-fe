@@ -47,10 +47,10 @@ export const ArticlesFormPage = () => {
   };
   return (
     <>
-      <section className="bg-gray-100">
+      <section className="bg-gray-100 mt-20 mb-28 flex ">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-            <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+            <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-12 lg:p-12">
               <form
                 action="#"
                 className="space-y-4"

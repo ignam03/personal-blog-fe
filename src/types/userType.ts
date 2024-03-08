@@ -1,6 +1,6 @@
 export interface UserType {
   id: number;
-  username?: string;
+  userName: string;
   email: string;
   firstName?: string;
   lastName?: string;
@@ -8,4 +8,6 @@ export interface UserType {
   role?: string;
   gender?: string;
   isActive?: string;
+  profileImage: string;
+  file: File[];
 }

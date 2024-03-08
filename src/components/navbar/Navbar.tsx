@@ -8,7 +8,11 @@ export const Navbar = () => {
   const { isAuthenticated, user } = useAuth();
 
   const LogoText = () => {
-    return <h1 className="text-2xl font-bold text-black">Blog Dev</h1>;
+    return (
+      <Link to={"/"} className="text-2xl font-bold text-black">
+        Blog Dev
+      </Link>
+    );
   };
 
   return (

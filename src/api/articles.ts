@@ -7,7 +7,8 @@ export const createArticle = (
     headers: { Authorization: string };
   }
 ) => clientAxios.post(`/articles`, article, config);
-export const fetchArticlesRequest = () => clientAxios.get(`/articles`);
+export const fetchArticlesRequest = (limit?: number) =>
+  clientAxios.get(`/articles`, { params: { limit } });
 export const fetchArticleRequest = (
   id: number,
   config: { headers: { Authorization: string } }
@@ -24,5 +25,6 @@ export const deleteArticleRequest = (
 export const fetchMyArticlesRequest = (config: {
   headers: { Authorization: string };
 }) => {
-  return clientAxios.get(`/articles/my-articles`, config);
+  const res = clientAxios.get(`/articles/my-articles`, config);
+  return res;
 };

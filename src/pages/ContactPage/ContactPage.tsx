@@ -6,9 +6,10 @@ function classNames(...classes: string[]) {
 }
 export const ContactPage = () => {
   const [agreed, setAgreed] = useState(false);
+  const [enable] = useState(false);
   return (
     <>
-      <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+      <div className="isolate bg-white px-6 pt-24 sm:py-32 lg:px-8">
         {/* <div
           className="absolute inset-x-0 top-[10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
           aria-hidden="true"
@@ -49,6 +50,7 @@ export const ContactPage = () => {
                   id="first-name"
                   autoComplete="given-name"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  disabled={!enable}
                 />
               </div>
             </div>
@@ -66,6 +68,7 @@ export const ContactPage = () => {
                   id="last-name"
                   autoComplete="family-name"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  disabled={!enable}
                 />
               </div>
             </div>
@@ -83,6 +86,7 @@ export const ContactPage = () => {
                   id="company"
                   autoComplete="organization"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  disabled={!enable}
                 />
               </div>
             </div>
@@ -100,6 +104,7 @@ export const ContactPage = () => {
                   id="email"
                   autoComplete="email"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  disabled={!enable}
                 />
               </div>
             </div>
@@ -116,6 +121,7 @@ export const ContactPage = () => {
                     Country
                   </label>
                   <select
+                    disabled={!enable}
                     id="country"
                     name="country"
                     className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
@@ -135,6 +141,7 @@ export const ContactPage = () => {
                   id="phone-number"
                   autoComplete="tel"
                   className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  disabled={!enable}
                 />
               </div>
             </div>
@@ -152,12 +159,14 @@ export const ContactPage = () => {
                   rows={4}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
+                  disabled={!enable}
                 />
               </div>
             </div>
             <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
               <div className="flex h-6 items-center">
                 <Switch
+                  disabled={!enable}
                   checked={agreed}
                   onChange={setAgreed}
                   className={classNames(
@@ -188,6 +197,7 @@ export const ContactPage = () => {
             <button
               type="submit"
               className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              disabled={!enable}
             >
               Let's talk
             </button>
