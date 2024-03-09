@@ -12,7 +12,7 @@ export const fetchMyProfileRequest = async () => {
   const res = await clientAxios.get(`/users/my-profile`, config);
   return res.data;
 };
-export const updateMyProfileRequest = async (data: any) => {
+export const updateMyProfileRequest = async (data: FormData) => {
   const token = localStorage.getItem("token");
   const config = {
     headers: {
@@ -21,6 +21,5 @@ export const updateMyProfileRequest = async (data: any) => {
     },
   };
   const res = await clientAxios.patch(`/users/my-profile`, data, config);
-  console.log(res);
   return res;
 };

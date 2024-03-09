@@ -33,14 +33,13 @@ export const ProfilePage = () => {
   useEffect(() => {
     const user = async () => {
       const res = await fetchMyProfileRequest();
+      dispatch(setUser(res));
       setMyProfile(res);
       setValue("userName", myProfile?.userName ?? "");
       setValue("email", myProfile?.email ?? "");
       setValue("firstName", myProfile?.firstName ?? "");
       setValue("lastName", myProfile?.lastName ?? "");
       setValue("biography", myProfile?.biography ?? "");
-
-      dispatch(setUser(res.data));
     };
     user();
   }, [dispatch]);
@@ -55,11 +54,13 @@ export const ProfilePage = () => {
     formData.append("file", data.file[0]);
     const res = await updateMyProfileRequest(formData);
     if (res.status === 200) {
-      getSuccess(res.data.message);
+      getSuccess("Profile updated successfully");
       setMyProfile(res.data.updatedUser);
       dispatch(setUser(res.data.updatedUser));
     }
-    getError(res.data.message);
+    if (res.status === 400) {
+      getError(res.data.message);
+    }
   };
   return (
     <div className="container">
