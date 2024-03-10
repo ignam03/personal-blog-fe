@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useArticle } from "../../context/ArticleContext";
 import { PostImageCard } from "../../components/postImageCard/PostImageCard";
 import { Button } from "../../components/button/Button";
+import { LIMIT } from "../../types/Limit";
 
 export const ArticlesPage = () => {
   const { fetchArticles, articles } = useArticle();
   useEffect(() => {
-    fetchArticles();
+    fetchArticles(LIMIT.DEFAULT_ARTICLE);
   }, []);
   return (
     <section className="m-auto flex w-full max-w-screen-2xl flex-col gap-12 px-6 py-12 md:px-16 2xl:px-32 2xl:py-16">

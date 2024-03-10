@@ -3,12 +3,13 @@ import { useArticle } from "../../context/ArticleContext";
 import { PostImageCard } from "../../components/postImageCard/PostImageCard";
 import { Button } from "../../components/button/Button";
 import { ArticleStat } from "../../components/articleStat/ArticleStat";
+import { LIMIT } from "../../types/Limit";
 
 export const MyArticles = () => {
   const { fetchMyArticles, articles, totalComments } = useArticle();
   const totalAddons= 0;
   useEffect(() => {
-    fetchMyArticles();
+    fetchMyArticles(LIMIT.DEFAULT_MY_ARTICLES);
   }, []);
 
   return (

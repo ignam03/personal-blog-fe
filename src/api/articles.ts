@@ -22,9 +22,10 @@ export const deleteArticleRequest = (
   id: number,
   config: { headers: { Authorization: string } }
 ) => clientAxios.delete(`/articles/${id}`, config);
-export const fetchMyArticlesRequest = (config: {
-  headers: { Authorization: string };
-}) => {
-  const res = clientAxios.get(`/articles/my-articles`, config);
+export const fetchMyArticlesRequest = (
+  config: { headers: { Authorization: string } },
+  limit?: number
+) => {
+  const res = clientAxios.get(`/articles/my-articles?limit=${limit}`, config);
   return res;
 };
