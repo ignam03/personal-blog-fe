@@ -28,6 +28,24 @@ export const Snackbar: React.FC<Props> = ({ msg, onClose, className }) => {
           X
         </button>
       </div>
+      {/* <div
+        //role="alert"
+        className={twMerge(
+          clsx("rounded border-s-4 border-red-500 bg-red-50 p-4", className)
+        )}
+      >
+        <button
+          className="text-white hover:text-gray-200 text-bold text-2xl font-normal"
+          onClick={onClose}
+        >
+          X
+        </button>
+        <strong className="block font-medium text-white">
+          {" "}
+          Something went wrong{" "}
+        </strong>
+        <p className="mt-2 text-sm text-white">{msg}</p>
+      </div> */}
     </div>
   );
 };

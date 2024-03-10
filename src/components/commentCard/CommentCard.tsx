@@ -2,7 +2,17 @@ import React from "react";
 import { useComment } from "../../context/CommentContext";
 
 type ICommentCard = {
-  comment: any;
+  comment: {
+    id?: number;
+    content: string;
+    articleId: number;
+    parentCommentId?: number;
+    author?: {
+      id?: number;
+      userName?: string;
+      profileImage?: string;
+    };
+  };
 };
 export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
   const { content, id, author } = comment;
@@ -83,7 +93,7 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
             className="text-[10px] font-medium sm:text-xs"
             onClick={(e) => {
               e.preventDefault();
-              deleteComment(id);
+              deleteComment(id!);
             }}
           >
             delete!

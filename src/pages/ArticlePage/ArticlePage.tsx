@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { CommentBox } from "../../components/commentBox/CommentBox";
 import { useComment } from "../../context/CommentContext";
 import { CommentCard } from "../../components/commentCard/CommentCard";
+import { CommentType } from "../../types/commentType";
 
 export const ArticlePage = () => {
   const { fetchArticle, article } = useArticle();
@@ -57,7 +58,7 @@ export const ArticlePage = () => {
             <span className="h-px flex-1 bg-black"></span>
           </span>
           <CommentBox />
-          {comments?.map((comment: any) => (
+          {comments?.map((comment: CommentType) => (
             <CommentCard comment={comment} />
           ))}
         </section>

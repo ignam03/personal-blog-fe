@@ -3,12 +3,25 @@ import { useAuth } from "../../context/AuthContext";
 import { Dropdown } from "../dropdown/Dropdown";
 import { Avatar } from "../avatar/Avatar";
 import { Button } from "../button/Button";
+import { useSelector } from "react-redux";
+
+interface StateType {
+  user: {
+    profileImage: string;
+    id: number;
+    userName: string;
+  };
+}
 
 export const Navbar = () => {
   const { isAuthenticated, user } = useAuth();
-
+  const myUser = useSelector((state: StateType) => state.user);
   const LogoText = () => {
-    return <h1 className="text-2xl font-bold text-black">Blog Dev</h1>;
+    return (
+      <Link to={"/"} className="text-2xl font-bold text-black">
+        Blog Dev
+      </Link>
+    );
   };
 
   return (
@@ -54,9 +67,9 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="flex flex-1 items-center justify-end gap-4">
-            <Avatar elevated src={user?.profileImage} />
+            <Avatar elevated src={myUser?.profileImage ?? user?.profileImage} />
             <span className="hidden text-sm font-semibold md:inline text-black">
-              {user?.userName}
+              {myUser.userName ?? user?.userName}
             </span>
             <Button
               variant="text"

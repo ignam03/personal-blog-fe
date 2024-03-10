@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UserState {
   id: number;
-  username: string;
+  userName: string;
   email: string;
   firstName?: string;
   lastName?: string;
@@ -10,11 +10,13 @@ export interface UserState {
   role?: string;
   gender?: string;
   isActive?: string;
+  profileImage: string;
+  file: File[];
 }
 
 const initialState = {
   id: 0,
-  username: "",
+  userName: "",
   email: "",
   firstName: "",
   lastName: "",
@@ -22,6 +24,7 @@ const initialState = {
   role: "",
   gender: "",
   isActive: "",
+  profileImage: "",
 };
 
 export const userSlice = createSlice({
@@ -34,13 +37,14 @@ export const userSlice = createSlice({
         state.firstName = firstName;
       }
     },
-    setUser: (state, action: PayloadAction<UserState>) => {
-      state.id = action.payload.id;
-      state.username = action.payload.username;
+    setProfileUser: (state, action: PayloadAction<UserState>) => {
+      state.id = Number(action.payload.id);
+      state.userName = action.payload.userName;
+      state.profileImage = action.payload.profileImage;
       // ... update other properties similarly
-    }
+    },
   },
 });
 
-export const { fetchUser, setUser } = userSlice.actions;
+export const { fetchUser, setProfileUser } = userSlice.actions;
 export default userSlice.reducer;
