@@ -7,6 +7,9 @@ import {
   registerRequest,
 } from "../api/auth";
 import { LoginType } from "../types/loginType";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { setProfileUser } from "../redux/slices/userSlice";
 
 type contextAth = {
   //auth: boolean;
@@ -63,6 +66,7 @@ export const AuthProvider = ({ children }: Props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch<AppDispatch>();
 
   const singUp = async (user: RegisterType) => {
     try {
@@ -81,6 +85,7 @@ export const AuthProvider = ({ children }: Props) => {
     try {
       const res = await loginRequest(user);
       setUser(res.data.user);
+      dispatch(setProfileUser(res.data.user));
       localStorage.setItem("token", res.data.token);
       setIsAuthenticated(true);
     } catch (error: any) {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchMyProfileRequest, updateMyProfileRequest } from "../../api/user";
-import { setUser } from "../../redux/slices/userSlice";
+import { setProfileUser } from "../../redux/slices/userSlice";
 import { AppDispatch } from "../../redux/store";
 import { UserType } from "../../types/userType";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -33,7 +33,7 @@ export const ProfilePage = () => {
   useEffect(() => {
     const user = async () => {
       const res = await fetchMyProfileRequest();
-      dispatch(setUser(res));
+      dispatch(setProfileUser(res));
       setMyProfile(res);
       setValue("userName", myProfile?.userName ?? "");
       setValue("email", myProfile?.email ?? "");
@@ -56,7 +56,7 @@ export const ProfilePage = () => {
     if (res.status === 200) {
       getSuccess("Profile updated successfully");
       setMyProfile(res.data.updatedUser);
-      dispatch(setUser(res.data.updatedUser));
+      dispatch(setProfileUser(res.data.updatedUser));
     }
     if (res.status === 400) {
       getError(res.data.message);

@@ -1,11 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { fetchMyProfileRequest } from "../../api/user";
-
-const user = async () => {
-  const res = await fetchMyProfileRequest();
-  return res;
-};
-const userResult = await user();
 
 export interface UserState {
   id: number;
@@ -22,16 +15,16 @@ export interface UserState {
 }
 
 const initialState = {
-  id: userResult.id,
-  userName: userResult.userName,
-  email: userResult.email,
-  firstName: userResult.firstName,
+  id: 0,
+  userName: "",
+  email: "",
+  firstName: "",
   lastName: "",
   biography: "",
   role: "",
   gender: "",
   isActive: "",
-  profileImage: userResult.profileImage,
+  profileImage: "",
 };
 
 export const userSlice = createSlice({
@@ -44,7 +37,7 @@ export const userSlice = createSlice({
         state.firstName = firstName;
       }
     },
-    setUser: (state, action: PayloadAction<UserState>) => {
+    setProfileUser: (state, action: PayloadAction<UserState>) => {
       state.id = Number(action.payload.id);
       state.userName = action.payload.userName;
       state.profileImage = action.payload.profileImage;
@@ -53,5 +46,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { fetchUser, setUser } = userSlice.actions;
+export const { fetchUser, setProfileUser } = userSlice.actions;
 export default userSlice.reducer;
