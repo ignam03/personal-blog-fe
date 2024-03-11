@@ -17,6 +17,9 @@ import { MyArticles } from "./pages/MyArticles/MyArticles";
 import { Navbar } from "./components/navbar/Navbar";
 import { Footer } from "./layout/Footer";
 import { ChangePasswordPage } from "./pages/ChangePasswordPage/ChangePasswordPage";
+import { ResetPassword } from "./pages/ResetPassword/ResetPassword";
+import { NewPassword } from "./pages/NewPassword/NewPassword";
+import { ConfirmAccount } from "./pages/ConfirmAccount/ConfirmAccount";
 
 function App() {
   return (
@@ -30,6 +33,15 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/about" element={<AboutPage />}></Route>
               <Route path="/contact" element={<ContactPage />}></Route>
+              <Route path="/reset-password" element={<ResetPassword />}></Route>
+              <Route
+                path="/confirm-account/:token"
+                element={<ConfirmAccount />}
+              ></Route>
+              <Route
+                path="/new-password/:token"
+                element={<NewPassword />}
+              ></Route>
               <Route
                 path="change-password"
                 element={<ChangePasswordPage />}

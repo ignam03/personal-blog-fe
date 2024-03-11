@@ -16,3 +16,9 @@ export const logoutRequest = (config: { headers: { Authorization: string } }) =>
 export const meRequest = (config: { headers: { Authorization: string } }) =>
   clientAxios.get(`/users/my-profile`, config);
 export const logout = () => clientAxios.post(`/auth/logout`);
+export const ConfirmAccountRequest = async (token?: string) => {
+  return clientAxios.get(`/auth/confirm-account/${token}`);
+};
+export const forgotPasswordRequest = async (email: string) => {
+  return clientAxios.post(`/users/forgot-password`, email);
+};

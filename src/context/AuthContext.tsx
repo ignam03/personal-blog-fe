@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { RegisterType } from "../types/registerType";
 import {
+  ConfirmAccountRequest,
   loginRequest,
   logoutRequest,
   meRequest,
@@ -21,6 +22,7 @@ type contextAth = {
   singUp: (user: RegisterType) => void;
   singIn: (user: LoginType) => void;
   logout: () => void;
+  confirmAccount: (token?: string) => void;
   user: RegisterType | null;
   isAuthenticated: boolean;
   loading: boolean;
@@ -71,9 +73,9 @@ export const AuthProvider = ({ children }: Props) => {
   const singUp = async (user: RegisterType) => {
     try {
       const res = await registerRequest(user);
-      localStorage.setItem("token", res.data.token);
-      setUser(res.data.user);
-      setIsAuthenticated(true);
+      //localStorage.setItem("token", res.data.token);
+      //setUser(res.data.user);
+      //setIsAuthenticated(true);
       return res.data.user;
     } catch (error: any) {
       console.log(error.response.data);
@@ -110,6 +112,15 @@ export const AuthProvider = ({ children }: Props) => {
     } catch (error) {
       console.error(error);
       setUser(null);
+    }
+  };
+
+  const confirmAccount = async (token?: string) => {
+    try {
+      const res = await ConfirmAccountRequest(token);
+      return res;
+    } catch (error: any) {
+      console.log(error.response.data.message);
     }
   };
 
@@ -153,7 +164,16 @@ export const AuthProvider = ({ children }: Props) => {
 
   return (
     <authContext.Provider
-      value={{ singUp, singIn, user, isAuthenticated, loading, errors, logout }}
+      value={{
+        singUp,
+        singIn,
+        user,
+        isAuthenticated,
+        loading,
+        errors,
+        logout,
+        confirmAccount,
+      }}
     >
       {children}
     </authContext.Provider>
