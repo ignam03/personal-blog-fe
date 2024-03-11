@@ -4,10 +4,11 @@ import { PostImageCard } from "../../components/postImageCard/PostImageCard";
 import { Button } from "../../components/button/Button";
 import { ArticleStat } from "../../components/articleStat/ArticleStat";
 import { LIMIT } from "../../types/Limit";
+import { ProfileLoader } from "../../components/profileLoader/ProfileLoader";
 
 export const MyArticles = () => {
   const { fetchMyArticles, articles, totalComments } = useArticle();
-  const totalAddons= 0;
+  const totalAddons = 0;
   useEffect(() => {
     fetchMyArticles(LIMIT.DEFAULT_MY_ARTICLES);
   }, []);
@@ -25,9 +26,15 @@ export const MyArticles = () => {
       </span>
 
       <div className="grid w-full grid-flow-row gap-x-0 gap-y-6 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
-        {articles.map((article) => (
-          <PostImageCard key={article.id} article={article} />
-        ))}
+        {articles.length ? (
+          <>
+            {articles.map((article) => (
+              <PostImageCard key={article.id} article={article} />
+            ))}
+          </>
+        ) : (
+          <ProfileLoader />
+        )}
       </div>
       <div className="flex justify-between">
         <Button size="large">See More</Button>
