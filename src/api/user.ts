@@ -1,4 +1,5 @@
 import { clientAxios } from "../config/clientAxios";
+import { NewPasswordType } from "../types/NewPassword";
 import { PasswordType } from "../types/PasswordType";
 
 export const fetchMyProfileRequest = async () => {
@@ -41,5 +42,13 @@ export const updateUserPasswordRequest = async (body: PasswordType) => {
   if (res.status === 200) {
     localStorage.removeItem("token");
   }
+  return res;
+};
+
+export const resetPasswordRequest = async (
+  token: string,
+  body: NewPasswordType
+) => {
+  const res = await clientAxios.post(`/users/reset-password/${token}`, body);
   return res;
 };

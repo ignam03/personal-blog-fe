@@ -22,6 +22,7 @@ export const RegisterPage = () => {
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<IRegister> = async (data) => {
     await singUp(data);
+    navigate("/login");
   };
 
   useEffect(() => {
