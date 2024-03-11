@@ -13,7 +13,9 @@ export const ResetPassword = () => {
   const onSubmit: SubmitHandler<any> = async (data) => {
     try {
       const res = await forgotPasswordRequest(data);
-      setUpdatePasswordSuccess("Check your email to reset your password");
+      if (res.status === 201) {
+        setUpdatePasswordSuccess("Check your email to reset your password");
+      }
       return res;
     } catch (error: any) {
       console.log(error.response.data.message);
@@ -23,7 +25,7 @@ export const ResetPassword = () => {
   setTimeout(() => {
     setUpdatePasswordSuccess("");
     setUpdatePasswordErrors("");
-  }, 3000);
+  }, 5000);
   return (
     <>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
