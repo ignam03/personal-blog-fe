@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useArticle } from "../context/ArticleContext";
 import { LIMIT } from "../types/Limit";
+import { ProfileLoader } from "../components/profileLoader/ProfileLoader";
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
   const { fetchArticles, articles } = useArticle();
@@ -79,32 +81,46 @@ export const HomePage = () => {
           </div>
 
           <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {articles.map((article) => (
-              <li key={article.id}>
-                <a href="#" className="group block overflow-hidden">
-                  <img
-                    src={article.articleImage}
-                    alt=""
-                    className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-                  />
+            {articles.length ? (
+              <>
+                {articles.map((article) => (
+                  <li key={article.id}>
+                    <Link
+                      to={`/article/${article.id}`}
+                      className="group block overflow-hidden"
+                    >
+                      <img
+                        src={article.articleImage}
+                        alt=""
+                        className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
+                      />
 
-                  <div className="relative bg-white pt-3">
-                    <h3 className="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                      {article.title}
-                    </h3>
+                      <div className="relative bg-white pt-3">
+                        <h3 className="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                          {article.title}
+                        </h3>
 
-                    <p className="mt-2">
-                      <span className="sr-only"> {article.user.userName} </span>
+                        <p className="mt-2">
+                          <span className="sr-only">
+                            {" "}
+                            {article.user.userName}{" "}
+                          </span>
 
-                      <span className="tracking-wider text-gray-900">
-                        {" "}
-                        {article.user.userName}{" "}
-                      </span>
-                    </p>
-                  </div>
-                </a>
-              </li>
-            ))}
+                          <span className="tracking-wider text-gray-900">
+                            {" "}
+                            {article.user.userName}{" "}
+                          </span>
+                        </p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </>
+            ) : (
+              <>
+                <ProfileLoader />
+              </>
+            )}
           </ul>
         </div>
         <hr />

@@ -5,6 +5,7 @@ import { CommentBox } from "../../components/commentBox/CommentBox";
 import { useComment } from "../../context/CommentContext";
 import { CommentCard } from "../../components/commentCard/CommentCard";
 import { CommentType } from "../../types/commentType";
+import { ProfileLoader } from "../../components/profileLoader/ProfileLoader";
 
 export const ArticlePage = () => {
   const { fetchArticle, article } = useArticle();
@@ -63,7 +64,9 @@ export const ArticlePage = () => {
           ))}
         </section>
       ) : (
-        <h1>Not found</h1>
+        <>
+          <ProfileLoader/>
+        </>
       )}
     </>
   );
