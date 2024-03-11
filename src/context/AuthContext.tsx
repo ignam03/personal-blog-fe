@@ -89,6 +89,8 @@ export const AuthProvider = ({ children }: Props) => {
       setUser(res.data.user);
       dispatch(setProfileUser(res.data.user));
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userName", res.data.user.userName);
+      localStorage.setItem("profileImage", res.data.user.profileImage);
       setIsAuthenticated(true);
     } catch (error: any) {
       console.log(error.response.data);

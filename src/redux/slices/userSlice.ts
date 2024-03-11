@@ -1,5 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+const userName = localStorage.getItem("userName");
+const profileImage = localStorage.getItem("profileImage");
 export interface UserState {
   id: number;
   userName: string;
@@ -16,7 +18,7 @@ export interface UserState {
 
 const initialState = {
   id: 0,
-  userName: "",
+  userName: userName,
   email: "",
   firstName: "",
   lastName: "",
@@ -24,7 +26,7 @@ const initialState = {
   role: "",
   gender: "",
   isActive: "",
-  profileImage: "",
+  profileImage: profileImage,
 };
 
 export const userSlice = createSlice({
@@ -38,7 +40,6 @@ export const userSlice = createSlice({
       }
     },
     setProfileUser: (state, action: PayloadAction<UserState>) => {
-      state.id = Number(action.payload.id);
       state.userName = action.payload.userName;
       state.profileImage = action.payload.profileImage;
       // ... update other properties similarly
