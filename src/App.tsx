@@ -1,25 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
-import { LoginPage } from "./pages/LoginPage/LoginPage";
+import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import { ArticlesPage } from "./pages/ArticlesPage/ArticlesPage";
-import { ArticlesFormPage } from "./pages/ArticleFormPage/ArticleFormPage";
-import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
-import { HomePage } from "./pages/HomePage";
-import { ProtectedRoute } from "./routes/ProtectedRoute";
-import { ArticleProvider } from "./context/ArticleContext";
-import { ContactPage } from "./pages/ContactPage/ContactPage";
-import { AboutPage } from "./pages/AboutPage/AboutPage";
 import { NotificationProvider } from "./context/NotificationContext";
-import { ArticlePage } from "./pages/ArticlePage/ArticlePage";
-import { CommentProvider } from "./context/CommentContext";
-import { MyArticles } from "./pages/MyArticles/MyArticles";
 import { Navbar } from "./components/navbar/Navbar";
 import { Footer } from "./layout/Footer";
-import { ChangePasswordPage } from "./pages/ChangePasswordPage/ChangePasswordPage";
-import { ResetPassword } from "./pages/ResetPassword/ResetPassword";
-import { NewPassword } from "./pages/NewPassword/NewPassword";
-import { ConfirmAccount } from "./pages/ConfirmAccount/ConfirmAccount";
+import { AppRouter } from "./routes/Router";
 
 function App() {
   return (
@@ -28,7 +12,8 @@ function App() {
         <BrowserRouter>
           <main className="container mx-auto px-10">
             <Navbar />
-            <Routes>
+
+            {/* <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/about" element={<AboutPage />}></Route>
@@ -46,8 +31,8 @@ function App() {
                 path="change-password"
                 element={<ChangePasswordPage />}
               ></Route>
-            </Routes>
-            <ArticleProvider>
+            </Routes> */}
+            {/* <ArticleProvider>
               <CommentProvider>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
@@ -64,7 +49,8 @@ function App() {
                   </Route>
                 </Routes>
               </CommentProvider>
-            </ArticleProvider>
+            </ArticleProvider> */}
+            <AppRouter />
             <Footer />
           </main>
         </BrowserRouter>
