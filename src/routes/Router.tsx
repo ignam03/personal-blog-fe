@@ -40,7 +40,7 @@ export const AppRouter = () => {
           ></Route>
           <Route path="/" element={<HomePage />} />
           <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/article/:id" element={<ArticlePage />}></Route>
+          <Route path="/article/:id" element={<ArticlePage />}/>
           <Route element={<ProtectedRoute />}>
             <Route path="/my-articles" element={<MyArticles />}></Route>
             <Route path="/add-article" element={<ArticlesFormPage />} />

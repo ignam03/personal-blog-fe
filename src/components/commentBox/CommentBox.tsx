@@ -1,14 +1,25 @@
 import { useComment } from "../../context/CommentContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 type IComment = {
   content: string;
   articleId: number;
   parentCommentId?: number;
 };
+
+interface StateType {
+  user: {
+    profileImage: string;
+    id: number;
+    userName: string;
+  };
+}
+
 export const CommentBox = () => {
   const { createComment } = useComment();
+  const myUser = useSelector((state: StateType) => state.user);
   const params = useParams();
   const {
     register,
@@ -19,6 +30,11 @@ export const CommentBox = () => {
     createComment({
       ...data,
       articleId: Number(params.id),
+      author: {
+        id: myUser.id,
+        userName: myUser.userName,
+        profileImage: myUser.profileImage,
+      },
     });
   };
   return (
