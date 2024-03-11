@@ -80,9 +80,9 @@ export const CommentProvider = ({ children }: Props) => {
   const fetchCommentsByArticle = async (id: number) => {
     try {
       const token = localStorage.getItem("token");
-      if (!token) {
-        getError("You must be logged in");
-      }
+      // if (!token) {
+      //   getError("You must be logged in");
+      // }
       const config = {
         headers: {
           "Content-Type": "application/json",
