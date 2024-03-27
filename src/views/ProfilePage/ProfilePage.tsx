@@ -64,10 +64,10 @@ export const ProfilePage = () => {
     }
   };
   return (
-    <div className="container">
+    <div className="container mx-auto">
       {myProfile ? (
         <>
-          <div className="container mt-5 flex justify-center rounded-md border mb-4">
+          <div className=" mt-5 flex justify-center rounded-md border mb-4 dark:text-darkGray">
             <label
               htmlFor="AcceptConditions"
               className="relative h-8 w-14 m-9 cursor-pointer rounded-full bg-gray-300 transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-blue-500"
@@ -92,21 +92,21 @@ export const ProfilePage = () => {
             >
               <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
-                  <h2 className="text-base font-semibold leading-7 text-gray-900">
+                  <h2 className="text-base font-semibold leading-7 dark:text-darkGray">
                     Profile
                   </h2>
                   <p className="mt-1 text-sm leading-6 text-gray-600">
-                    This information will be displayed publicly so be careful
-                    what you share.
+                    Esta información se mostrará públicamente, así que tenga
+                    cuidado. lo que compartes.
                   </p>
 
                   <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-4">
                       <label
                         htmlFor="username"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
-                        Username
+                        Nombre de usuario
                       </label>
                       <div className="mt-2">
                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -119,7 +119,7 @@ export const ProfilePage = () => {
                               required: true,
                             })}
                             autoComplete="userName"
-                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 dark:text-darkGray placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                             placeholder={myProfile?.userName}
                             disabled={!enable}
                           />
@@ -135,15 +135,15 @@ export const ProfilePage = () => {
                     <div className="col-span-full">
                       <label
                         htmlFor="about"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
-                        About
+                        biografia
                       </label>
                       <div className="mt-2">
                         <textarea
                           {...register("biography", { required: true })}
                           rows={3}
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder={myProfile?.biography}
                           disabled={!enable}
                         />
@@ -154,14 +154,14 @@ export const ProfilePage = () => {
                         )}
                       </div>
                       <p className="mt-3 text-sm leading-6 text-gray-600">
-                        Write a few sentences about yourself.
+                        Escribe algunas frases sobre ti.
                       </p>
                     </div>
 
                     <div className="col-span-full">
                       <label
                         htmlFor="photo"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
                         Photo
                       </label>
@@ -174,7 +174,7 @@ export const ProfilePage = () => {
 
                         <input
                           type="file"
-                          className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                          className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                           disabled={!enable}
                           {...register("file", {
                             required: true,
@@ -186,9 +186,9 @@ export const ProfilePage = () => {
                     <div className="col-span-full">
                       <label
                         htmlFor="cover-photo"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
-                        Cover photo
+                        Foto de cubierta
                       </label>
                       <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                         <div className="text-center">
@@ -222,20 +222,20 @@ export const ProfilePage = () => {
                 </div>
 
                 <div className="border-b border-gray-900/10 pb-12">
-                  <h2 className="text-base font-semibold leading-7 text-gray-900">
-                    Personal Information
+                  <h2 className="text-base font-semibold leading-7 dark:text-darkGray">
+                    Informacion personal
                   </h2>
                   <p className="mt-1 text-sm leading-6 text-gray-600">
-                    Use a permanent address where you can receive mail.
+                    Utilice una dirección permanente donde pueda recibir correo.
                   </p>
 
                   <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-3">
                       <label
                         htmlFor="first-name"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
-                        First name
+                        Nombre
                       </label>
                       <div className="mt-2">
                         <input
@@ -243,7 +243,7 @@ export const ProfilePage = () => {
                           {...register("firstName", { required: true })}
                           autoComplete="given-name"
                           placeholder={myProfile?.firstName}
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           disabled={!enable}
                         />
                       </div>
@@ -257,16 +257,16 @@ export const ProfilePage = () => {
                     <div className="sm:col-span-3">
                       <label
                         htmlFor="last-name"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
-                        Last name
+                        Apellido
                       </label>
                       <div className="mt-2">
                         <input
                           type="text"
                           {...register("lastName", { required: true })}
                           autoComplete="family-name"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           disabled={!enable}
                           placeholder={myProfile?.lastName}
                         />
@@ -281,16 +281,16 @@ export const ProfilePage = () => {
                     <div className="sm:col-span-4">
                       <label
                         htmlFor="email"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
-                        Email address
+                        Email
                       </label>
                       <div className="mt-2">
                         <input
                           {...register("email", { required: true })}
                           type="email"
                           autoComplete="email"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           disabled={!enable}
                           placeholder={myProfile?.email}
                         />
@@ -305,7 +305,7 @@ export const ProfilePage = () => {
                     {/* <div className="sm:col-span-3">
                   <label
                     htmlFor="country"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 dark:text-darkGray"
                   >
                     Country
                   </label>
@@ -314,7 +314,7 @@ export const ProfilePage = () => {
                       id="country"
                       name="country"
                       autoComplete="country-name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                       disabled={!enable}
                     >
                       <option>United States</option>
@@ -327,7 +327,7 @@ export const ProfilePage = () => {
                 <div className="col-span-full">
                   <label
                     htmlFor="street-address"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 dark:text-darkGray"
                   >
                     Street address
                   </label>
@@ -337,7 +337,7 @@ export const ProfilePage = () => {
                       name="street-address"
                       id="street-address"
                       autoComplete="street-address"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       disabled={!enable}
                     />
                   </div>
@@ -346,7 +346,7 @@ export const ProfilePage = () => {
                 <div className="sm:col-span-2 sm:col-start-1">
                   <label
                     htmlFor="city"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 dark:text-darkGray"
                   >
                     City
                   </label>
@@ -356,7 +356,7 @@ export const ProfilePage = () => {
                       name="city"
                       id="city"
                       autoComplete="address-level2"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       disabled={!enable}
                     />
                   </div>
@@ -365,7 +365,7 @@ export const ProfilePage = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="region"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 dark:text-darkGray"
                   >
                     State / Province
                   </label>
@@ -375,7 +375,7 @@ export const ProfilePage = () => {
                       name="region"
                       id="region"
                       autoComplete="address-level1"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       disabled={!enable}
                     />
                   </div>
@@ -384,7 +384,7 @@ export const ProfilePage = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="postal-code"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 dark:text-darkGray"
                   >
                     ZIP / Postal code
                   </label>
@@ -394,7 +394,7 @@ export const ProfilePage = () => {
                       name="postal-code"
                       id="postal-code"
                       autoComplete="postal-code"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 dark:text-darkGray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       disabled={!enable}
                     />
                   </div>
@@ -403,7 +403,7 @@ export const ProfilePage = () => {
                 </div>
 
                 {/* <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">
+              <h2 className="text-base font-semibold leading-7 dark:text-darkGray">
                 Notifications
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
@@ -413,7 +413,7 @@ export const ProfilePage = () => {
 
               <div className="mt-10 space-y-10">
                 <fieldset>
-                  <legend className="text-sm font-semibold leading-6 text-gray-900">
+                  <legend className="text-sm font-semibold leading-6 dark:text-darkGray">
                     By Email
                   </legend>
                   <div className="mt-6 space-y-6">
@@ -429,7 +429,7 @@ export const ProfilePage = () => {
                       <div className="text-sm leading-6">
                         <label
                           htmlFor="comments"
-                          className="font-medium text-gray-900"
+                          className="font-medium dark:text-darkGray"
                         >
                           Comments
                         </label>
@@ -451,7 +451,7 @@ export const ProfilePage = () => {
                       <div className="text-sm leading-6">
                         <label
                           htmlFor="candidates"
-                          className="font-medium text-gray-900"
+                          className="font-medium dark:text-darkGray"
                         >
                           Candidates
                         </label>
@@ -472,7 +472,7 @@ export const ProfilePage = () => {
                       <div className="text-sm leading-6">
                         <label
                           htmlFor="offers"
-                          className="font-medium text-gray-900"
+                          className="font-medium dark:text-darkGray"
                         >
                           Offers
                         </label>
@@ -485,7 +485,7 @@ export const ProfilePage = () => {
                   </div>
                 </fieldset>
                 <fieldset>
-                  <legend className="text-sm font-semibold leading-6 text-gray-900">
+                  <legend className="text-sm font-semibold leading-6 dark:text-darkGray">
                     Push Notifications
                   </legend>
                   <p className="mt-1 text-sm leading-6 text-gray-600">
@@ -501,7 +501,7 @@ export const ProfilePage = () => {
                       />
                       <label
                         htmlFor="push-everything"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
                         Everything
                       </label>
@@ -515,7 +515,7 @@ export const ProfilePage = () => {
                       />
                       <label
                         htmlFor="push-email"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
                         Same as email
                       </label>
@@ -529,7 +529,7 @@ export const ProfilePage = () => {
                       />
                       <label
                         htmlFor="push-nothing"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm font-medium leading-6 dark:text-darkGray"
                       >
                         No push notifications
                       </label>
@@ -543,7 +543,7 @@ export const ProfilePage = () => {
               <div className="mt-6 flex items-center justify-end gap-x-6">
                 <button
                   type="button"
-                  className="text-sm font-semibold leading-6 text-gray-900"
+                  className="text-sm font-semibold leading-6 dark:text-darkGray"
                   disabled={!enable}
                   onClick={() => setEnable(false)}
                 >
@@ -554,7 +554,7 @@ export const ProfilePage = () => {
                   className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   disabled={!enable}
                 >
-                  Save
+                  Guardar
                 </button>
               </div>
             </form>

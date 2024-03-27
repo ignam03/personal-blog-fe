@@ -46,7 +46,7 @@ export const CommentBox = () => {
           <div className="overflow-hidden">
             <textarea
               id="OrderNotes"
-              className="w-full resize-none border-x-0 border-t-0 rounded-md border-gray-200 px-0 align-top sm:text-sm"
+              className="w-full resize-none border-x-0 border-t-0 rounded-md border-gray-200 px-0 align-top sm:text-sm "
               rows={4}
               placeholder="Comment..."
               {...register("content", {
@@ -70,7 +70,7 @@ export const CommentBox = () => {
                 type="submit"
                 className="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
               >
-                Comment
+                Comentar
               </button>
             </div>
           </div>

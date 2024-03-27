@@ -11,12 +11,12 @@ export const ArticlesPage = () => {
     fetchArticles(LIMIT.DEFAULT_ARTICLE);
   }, []);
   return (
-    <section className="m-auto flex w-full max-w-screen-2xl flex-col gap-12 px-6 py-12 md:px-16 2xl:px-32 2xl:py-16">
+    <section className="m-auto flex w-full max-w-screen-2xl flex-col gap-12 px-6 py-12 md:px-16 2xl:px-32 2xl:py-16 dark:text-darkGray">
       {/* <h3 className="text-4xl text-black font-semibold text-slate-950">
         All Articles
       </h3> */}
       <span className="flex items-center">
-        <span className="pr-6 text-4xl">All Articles</span>
+        <span className="pr-6 text-4xl">Todos los articulos</span>
         <span className="h-px flex-1 bg-black"></span>
       </span>
       {articles.length ? (
@@ -36,7 +36,7 @@ export const ArticlesPage = () => {
         <span className="h-px flex-1 bg-black"></span>
       </span>
       <div className="flex justify-between">
-        <Button size="large">See More</Button>
+        <Button size="large">Ver mas</Button>
       </div>
     </section>
   );

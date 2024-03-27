@@ -31,11 +31,10 @@ export const ChangePasswordPage = () => {
     <>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">
-          <h1 className="text-2xl font-bold sm:text-3xl">Change Password</h1>
+          <h1 className="text-2xl font-bold sm:text-3xl">Cambiar Contraseña</h1>
 
           <p className="mt-4 text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
-            nulla eaque error neque ipsa culpa autem, at itaque nostrum!
+            Recuerda que al cambiar de contraseña , tus credenciales de acceso serán las nuevas
           </p>
         </div>
 
@@ -58,7 +57,7 @@ export const ChangePasswordPage = () => {
               <input
                 type={type}
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="old password"
+                placeholder="vieja contraseña"
                 {...register("oldPassword", {
                   required: true,
                 })}
@@ -105,7 +104,7 @@ export const ChangePasswordPage = () => {
               <input
                 type={type}
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="new password"
+                placeholder="nueva contraseña"
                 {...register("newPassword", {
                   required: true,
                   minLength: 8,
@@ -154,7 +153,7 @@ export const ChangePasswordPage = () => {
               type="submit"
               className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
             >
-              Change
+              Cambiar
             </button>
           </div>
         </form>

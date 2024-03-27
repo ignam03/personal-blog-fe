@@ -41,7 +41,7 @@ export const NewPassword = () => {
           <h1 className="text-2xl font-bold sm:text-3xl">Reset new Password</h1>
 
           <p className="mt-4 text-gray-500">
-            recover your access and don't lose your project!
+            ¡Recupera tu acceso y no pierdas tu proyecto!
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export const NewPassword = () => {
               type="submit"
               className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
             >
-              save new password
+              guardar nueva contraseña
             </button>
           </div>
         </form>

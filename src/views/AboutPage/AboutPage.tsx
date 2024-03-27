@@ -18,7 +18,7 @@ export const AboutPage = () => {
             <p className="text-sm font-semibold uppercase text-slate-500">
               Tailframes
             </p>
-            <h3 className="text-4xl font-semibold text-slate-950 md:text-5xl">
+            <h3 className="text-4xl font-semibold text-slate-950 md:text-5xl dark:text-darkGray">
               Copy & Paste.
               <br />
               It's that simple.

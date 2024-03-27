@@ -9,7 +9,7 @@ export const ContactPage = () => {
   const [enable] = useState(false);
   return (
     <>
-      <div className="isolate bg-white px-6 pt-24 sm:py-32 lg:px-8">
+      <div className="isolate px-6 pt-24 sm:py-32 lg:px-8">
         {/* <div
           className="absolute inset-x-0 top-[10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
           aria-hidden="true"
@@ -22,8 +22,8 @@ export const ContactPage = () => {
             }}
           />
         </div> */}
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="mx-auto max-w-2xl text-center dark:text-darkGray">
+          <h2 className="text-3xl font-bold tracking-tight dark:text-dark sm:text-4xl">
             Contact to me
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
@@ -33,13 +33,13 @@ export const ContactPage = () => {
         <form
           action="#"
           method="POST"
-          className="mx-auto mt-16 max-w-xl sm:mt-20"
+          className="mx-auto mt-16 max-w-xl sm:mt-20 dark:text-darkGray"
         >
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div>
               <label
                 htmlFor="first-name"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 First name
               </label>
@@ -49,7 +49,7 @@ export const ContactPage = () => {
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   disabled={!enable}
                 />
               </div>
@@ -57,7 +57,7 @@ export const ContactPage = () => {
             <div>
               <label
                 htmlFor="last-name"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 Last name
               </label>
@@ -67,7 +67,7 @@ export const ContactPage = () => {
                   name="last-name"
                   id="last-name"
                   autoComplete="family-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   disabled={!enable}
                 />
               </div>
@@ -75,7 +75,7 @@ export const ContactPage = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="company"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6 "
               >
                 Company
               </label>
@@ -85,7 +85,7 @@ export const ContactPage = () => {
                   name="company"
                   id="company"
                   autoComplete="organization"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   disabled={!enable}
                 />
               </div>
@@ -93,7 +93,7 @@ export const ContactPage = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6 "
               >
                 Email
               </label>
@@ -103,7 +103,7 @@ export const ContactPage = () => {
                   name="email"
                   id="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   disabled={!enable}
                 />
               </div>
@@ -111,7 +111,7 @@ export const ContactPage = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="phone-number"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6 "
               >
                 Phone number
               </label>
@@ -140,7 +140,7 @@ export const ContactPage = () => {
                   name="phone-number"
                   id="phone-number"
                   autoComplete="tel"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 pl-20  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   disabled={!enable}
                 />
               </div>
@@ -148,7 +148,7 @@ export const ContactPage = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="message"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6 "
               >
                 Message
               </label>
@@ -157,7 +157,7 @@ export const ContactPage = () => {
                   name="message"
                   id="message"
                   rows={4}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
                   disabled={!enable}
                 />
@@ -184,7 +184,7 @@ export const ContactPage = () => {
                   />
                 </Switch>
               </div>
-              <Switch.Label className="text-sm leading-6 text-gray-600">
+              <Switch.Label className="text-sm leading-6 dark:text-darkGray">
                 By selecting this, you agree to our{" "}
                 <a href="#" className="font-semibold text-indigo-600">
                   privacy&nbsp;policy

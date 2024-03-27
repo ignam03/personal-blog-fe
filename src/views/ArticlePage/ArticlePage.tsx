@@ -65,7 +65,7 @@ export const ArticlePage = () => {
         </section>
       ) : (
         <>
-          <ProfileLoader/>
+          <ProfileLoader />
         </>
       )}
     </>

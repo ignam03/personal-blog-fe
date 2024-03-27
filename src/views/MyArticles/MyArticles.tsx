@@ -37,7 +37,7 @@ export const MyArticles = () => {
         )}
       </div>
       <div className="flex justify-between">
-        <Button size="large">See More</Button>
+        <Button size="large">Ver más</Button>
       </div>
       <span className="flex items-center">
         <span className="pr-6 text-4xl"></span>

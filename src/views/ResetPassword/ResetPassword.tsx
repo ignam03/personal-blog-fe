@@ -30,10 +30,12 @@ export const ResetPassword = () => {
     <>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">
-          <h1 className="text-2xl font-bold sm:text-3xl">Reset Password</h1>
+          <h1 className="text-2xl font-bold sm:text-3xl">
+            Restablecer la contraseña
+          </h1>
 
           <p className="mt-4 text-gray-500">
-            recover your access and don't lose your project!
+            ¡Recupera tu acceso y no pierdas tu proyecto!
           </p>
         </div>
 
@@ -54,7 +56,7 @@ export const ResetPassword = () => {
           )}
           <div>
             <label htmlFor="email" className="sr-only">
-              Email or Username
+              Email
             </label>
 
             <div className="relative">
@@ -82,7 +84,7 @@ export const ResetPassword = () => {
               type="submit"
               className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
             >
-              Send
+              Enviar
             </button>
           </div>
         </form>

@@ -44,7 +44,7 @@ export const PostImageCard = ({ article }: { article: IArticleType }) => {
           variant="text"
           className="p-0"
         >
-          Read More
+          Leer más
         </Button>
         {isAuthenticated && (
           <div className="">

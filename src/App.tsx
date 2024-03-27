@@ -10,9 +10,8 @@ function App() {
     <AuthProvider>
       <NotificationProvider>
         <BrowserRouter>
-          <main className="container mx-auto px-10">
+          <main className=" mx-auto px-10 text-evil dark:bg-evil">
             <Navbar />
-
             {/* <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />

@@ -14,8 +14,8 @@ export const HomePage = () => {
       <section>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           <header>
-            <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
-              Find all articles about your favorite topics
+            <h2 className="text-xl font-bold text-gray-900 sm:text-3xl dark:text-darkGray">
+              Encuentra todos los artículos sobre tus temas favoritos.
             </h2>
 
             <p className="mt-4 max-w-md text-gray-500">
@@ -27,7 +27,7 @@ export const HomePage = () => {
 
           <div className="mt-8 flex items-center justify-between">
             <div className="flex rounded border border-gray-100">
-              <button className="inline-flex size-10 items-center justify-center border-e text-gray-600 transition hover:bg-gray-50 hover:text-gray-700">
+              <button className="inline-flex size-10 items-center justify-center border-e text-gray-600 transition hover:bg-gray-50 hover:text-gray-700 dark:text-darkGray">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -63,15 +63,15 @@ export const HomePage = () => {
             </div>
 
             <div>
-              <label htmlFor="SortBy" className="sr-only">
-                SortBy
+              <label htmlFor="SortBy" className="sr-only ">
+                Ordenar por
               </label>
 
               <select
                 id="SortBy"
                 className="h-10 rounded border-gray-300 text-sm"
               >
-                <option>Sort By</option>
+                <option>Ordenar por</option>
                 <option value="Title, DESC">Title, DESC</option>
                 <option value="Title, ASC">Title, ASC</option>
                 <option value="Price, DESC">Price, DESC</option>
@@ -80,14 +80,14 @@ export const HomePage = () => {
             </div>
           </div>
 
-          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 dark:text-darkGray">
             {articles.length ? (
               <>
                 {articles.map((article) => (
-                  <li key={article.id}>
+                  <li key={article.id} className="dark:bg-evil">
                     <Link
                       to={`/article/${article.id}`}
-                      className="group block overflow-hidden"
+                      className="group block overflow-hidden "
                     >
                       <img
                         src={article.articleImage}
@@ -95,18 +95,18 @@ export const HomePage = () => {
                         className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
                       />
 
-                      <div className="relative bg-white pt-3">
-                        <h3 className="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                      <div className="relative bg-white pt-3 dark:bg-evil ">
+                        <h3 className="text-xs dark:text-darkGray group-hover:underline group-hover:underline-offset-4">
                           {article.title}
                         </h3>
 
-                        <p className="mt-2">
+                        <p className="mt-2 dark:text-darkGray">
                           <span className="sr-only">
                             {" "}
                             {article.user.userName}{" "}
                           </span>
 
-                          <span className="tracking-wider text-gray-900">
+                          <span className="tracking-wider dark:text-darkGray">
                             {" "}
                             {article.user.userName}{" "}
                           </span>

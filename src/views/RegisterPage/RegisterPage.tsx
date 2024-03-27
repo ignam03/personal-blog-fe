@@ -41,7 +41,7 @@ export const RegisterPage = () => {
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Register your account
+            Registra tu cuenta
           </h2>
           {SignUpErrors && (
             <p className="bg-red-400 text-center p-2 my-2 text-white-500 rounded-md">
@@ -57,7 +57,7 @@ export const RegisterPage = () => {
                 htmlFor="firstName"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                firstName
+                nombre
               </label>
               <div className="mt-2">
                 <input
@@ -78,7 +78,7 @@ export const RegisterPage = () => {
                 htmlFor="firstName"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Username
+                Nombre de usuario
               </label>
               <div className="mt-2">
                 <input
@@ -99,7 +99,7 @@ export const RegisterPage = () => {
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Username or Email address
+                Email
               </label>
               <div className="mt-2">
                 <input
@@ -122,7 +122,7 @@ export const RegisterPage = () => {
                   htmlFor="password"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Password
+                  Contraseña
                 </label>
               </div>
               <div className="mt-2">
@@ -145,18 +145,18 @@ export const RegisterPage = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Register
+                Registro
               </button>
             </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            you have account?{" "}
+            tienes una cuenta?{" "}
             <Link
               to={"/login"}
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              sign in
+              iniciar sesión
             </Link>
           </p>
         </div>

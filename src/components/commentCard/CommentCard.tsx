@@ -18,7 +18,7 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
   const { content, id, author } = comment;
   const { deleteComment } = useComment();
   return (
-    <article className="rounded-xl border-2 border-gray-100 bg-white">
+    <article className="rounded-xl border-2 border-gray-100 bg-white m-2">
       <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
         <a href="#" className="block shrink-0">
           <img
@@ -29,12 +29,12 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
         </a>
 
         <div>
-          <h3 className="font-medium sm:text-lg">
+          {/* <h3 className="font-medium sm:text-lg">
             <a href="#" className="hover:underline">
               {" "}
               Question about Livewire Rendering and Alpine JS{" "}
             </a>
-          </h3>
+          </h3> */}
 
           <p className="line-clamp-2 text-sm text-gray-700">{content}</p>
 
@@ -55,7 +55,7 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
                 />
               </svg>
 
-              <p className="text-xs">14 comments</p>
+              <p className="text-xs">14 comentarios</p>
             </div>
 
             <span className="hidden sm:block" aria-hidden="true">
@@ -96,7 +96,7 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
               deleteComment(id!);
             }}
           >
-            delete!
+            Eliminar!
           </button>
         </strong>
       </div>
