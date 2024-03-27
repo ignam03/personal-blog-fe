@@ -25,17 +25,17 @@ export const MyArticles = () => {
         <span className="h-px flex-1 bg-black"></span>
       </span>
 
-      <div className="grid w-full grid-flow-row gap-x-0 gap-y-6 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
-        {articles.length ? (
-          <>
+      {articles.length ? (
+        <>
+          <div className="grid w-full grid-flow-row gap-x-0 gap-y-6 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
             {articles.map((article) => (
               <PostImageCard key={article.id} article={article} />
             ))}
-          </>
-        ) : (
-          <ProfileLoader />
-        )}
-      </div>
+          </div>
+        </>
+      ) : (
+        <ProfileLoader />
+      )}
       <div className="flex justify-between">
         <Button size="large">Ver más</Button>
       </div>

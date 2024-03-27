@@ -7,7 +7,7 @@ export const ProfileLoader = () => {
           src="https://www.svgrepo.com/show/509001/avatar-thinking-9.svg"
           alt=""
         /> */}
-        <p className="dark:text-white">loading</p>
+        <p className="dark:text-darkGray">loading</p>
       </div>
     </>
   );

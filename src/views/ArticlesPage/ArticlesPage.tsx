@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useArticle } from "../../context/ArticleContext";
 import { PostImageCard } from "../../components/postImageCard/PostImageCard";
 import { Button } from "../../components/button/Button";
@@ -6,9 +6,11 @@ import { LIMIT } from "../../types/Limit";
 import { ProfileLoader } from "../../components/profileLoader/ProfileLoader";
 
 export const ArticlesPage = () => {
+  const [home, setHome] = useState(false);
   const { fetchArticles, articles } = useArticle();
   useEffect(() => {
     fetchArticles(LIMIT.DEFAULT_ARTICLE);
+    setHome(true);
   }, []);
   return (
     <section className="m-auto flex w-full max-w-screen-2xl flex-col gap-12 px-6 py-12 md:px-16 2xl:px-32 2xl:py-16 dark:text-darkGray">
@@ -23,7 +25,7 @@ export const ArticlesPage = () => {
         <>
           <div className="grid w-full grid-flow-row gap-x-0 gap-y-6 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
             {articles.map((article) => (
-              <PostImageCard key={article.id} article={article} />
+              <PostImageCard key={article.id} article={article} home={home}/>
             ))}
           </div>
         </>

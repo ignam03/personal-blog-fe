@@ -80,9 +80,9 @@ export const HomePage = () => {
             </div>
           </div>
 
-          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 dark:text-darkGray">
-            {articles.length ? (
-              <>
+          {articles.length ? (
+            <>
+              <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 dark:text-darkGray">
                 {articles.map((article) => (
                   <li key={article.id} className="dark:bg-evil">
                     <Link
@@ -115,13 +115,13 @@ export const HomePage = () => {
                     </Link>
                   </li>
                 ))}
-              </>
-            ) : (
-              <>
-                <ProfileLoader />
-              </>
-            )}
-          </ul>
+              </ul>
+            </>
+          ) : (
+            <>
+              <ProfileLoader />
+            </>
+          )}
         </div>
         <hr />
       </section>

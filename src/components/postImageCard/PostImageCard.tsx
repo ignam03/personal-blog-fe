@@ -4,6 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../button/Button";
 import { useAuth } from "../../context/AuthContext";
 
+type Prop = {
+  home?: boolean;
+  article: IArticleType;
+};
+
 type IArticleType = {
   id?: number;
   title: string;
@@ -12,7 +17,7 @@ type IArticleType = {
   user: any;
 };
 
-export const PostImageCard = ({ article }: { article: IArticleType }) => {
+export const PostImageCard = ({ article, home }: Prop) => {
   const { deleteArticle } = useArticle();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -46,7 +51,7 @@ export const PostImageCard = ({ article }: { article: IArticleType }) => {
         >
           Leer más
         </Button>
-        {isAuthenticated && (
+        {isAuthenticated && !home && (
           <div className="">
             <button
               className="bg-red-500 hover:bg-red-700 mx-2 text-white font-bold py-2 px-4 rounded-lg"
@@ -54,13 +59,13 @@ export const PostImageCard = ({ article }: { article: IArticleType }) => {
                 handleDelete(article.id!);
               }}
             >
-              Delete
+              Eliminar
             </button>
             <Link
               to={`/edit-article/${article.id}`}
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
             >
-              Edit
+              Editar
             </Link>
           </div>
         )}
