@@ -20,13 +20,13 @@ export const ArticleCard = ({ article }: { article: IArticleType }) => {
               deleteArticle(article.id!);
             }}
           >
-            Delete
+            Eliminar
           </button>
           <Link
             to={`/article/${article.id}`}
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
           >
-            Edit
+            Editar
           </Link>
         </div>
       </div>

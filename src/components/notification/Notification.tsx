@@ -1,7 +1,8 @@
 import React from "react";
 import { AlterColor } from "../../types/AlterColor";
-import { Snackbar } from "../snackbar/Snackbar";
-import clsx from "clsx";
+// import { Snackbar } from "../snackbar/Snackbar";
+// import clsx from "clsx";
+import { Alert } from "../alert/Alert";
 
 type NotificationProps = {
   open: boolean;
@@ -21,15 +22,16 @@ export const Notification: React.FC<NotificationProps> = ({
   return (
     <>
       {open && (
-        <Snackbar
-          msg={msg}
-          onClose={handleClose}
-          className={clsx({
-            "bg-green-500 hover:bg-green-600": severity === "success",
-            "bg-red-500  hove:bg-red-600": severity === "error",
-            "bg-yellow-500 hover:bg-red-600": severity === "warning",
-          })}
-        ></Snackbar>
+        // <Snackbar
+        //   msg={msg}
+        //   onClose={handleClose}
+        //   className={clsx({
+        //     "bg-green-500 hover:bg-green-600": severity === "success",
+        //     "bg-red-500  hove:bg-red-600": severity === "error",
+        //     "bg-yellow-500 hover:bg-red-600": severity === "warning",
+        //   })}
+        // ></Snackbar>
+        <Alert severity={severity} msg={msg} onClose={handleClose} />
       )}
     </>
   );
