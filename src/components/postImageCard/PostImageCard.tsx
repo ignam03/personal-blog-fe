@@ -3,6 +3,10 @@ import { useArticle } from "../../context/ArticleContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../button/Button";
 import { useAuth } from "../../context/AuthContext";
+import { useState } from "react";
+import { DialogConfirm } from "../dialogConfirm/DialogConfirm";
+import { DELETE_TYPE } from "../../types/DeleteTypes";
+import { UserType } from "../../types/userType";
 
 type Prop = {
   home?: boolean;
@@ -14,13 +18,31 @@ type IArticleType = {
   title: string;
   description: string;
   articleImage?: string;
-  user: any;
+  user: UserType;
 };
 
 export const PostImageCard = ({ article, home }: Prop) => {
+  const [type, setType] = useState<string>("");
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
   const { deleteArticle } = useArticle();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  const showModal = (type: string) => {
+    setType(type);
+    if (type === "article") {
+      setMessage(
+        `Estás seguro de que quieres eliminar este artículo  '${article.title}'?`
+      );
+    }
+    setOpen(true);
+  };
+
+  const handleConfirm = () => {
+    setOpen(false);
+  };
+
   const handleDelete = async (articleId: number) => {
     await deleteArticle(articleId);
   };
@@ -56,7 +78,7 @@ export const PostImageCard = ({ article, home }: Prop) => {
             <button
               className="bg-red-500 hover:bg-red-700 mx-2 text-white font-bold py-2 px-4 rounded-lg"
               onClick={() => {
-                handleDelete(article.id!);
+                showModal(DELETE_TYPE.ARTICLE);
               }}
             >
               Eliminar
@@ -70,6 +92,14 @@ export const PostImageCard = ({ article, home }: Prop) => {
           </div>
         )}
       </div>
+      <DialogConfirm
+        showModal={open}
+        msg={message}
+        confirmModal={handleDelete}
+        hiddenModal={handleConfirm}
+        type={type}
+        id={article.id!}
+      />
     </div>
   );
 };

@@ -39,7 +39,7 @@ export const CommentBox = () => {
   };
   return (
     <>
-      <div className="mt-5">
+      <div className="mt-5 container mx-auto">
         <form action="" onSubmit={handleSubmit(onSubmit)}>
           <label className="sr-only">Order notes</label>
 
