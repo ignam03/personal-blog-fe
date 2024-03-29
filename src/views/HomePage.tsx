@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useArticle } from "../context/ArticleContext";
-import { LIMIT } from "../types/Limit";
 import { ProfileLoader } from "../components/profileLoader/ProfileLoader";
 import { Link } from "react-router-dom";
+import { LIMIT } from "../types/Limit";
 
 export const HomePage = () => {
-  const { fetchArticles, articles } = useArticle();
+  const { fetchArticles, responseArticle } = useArticle();
+  const size = LIMIT.DEFAULT_HOME;
+  const page = 0;
   useEffect(() => {
-    fetchArticles(LIMIT.DEFAULT_HOME);
+    fetchArticles(page, size);
   }, []);
   return (
     <>
@@ -80,10 +82,10 @@ export const HomePage = () => {
             </div>
           </div>
 
-          {articles.length ? (
+          {responseArticle?.articles.length ? (
             <>
               <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 dark:text-darkGray">
-                {articles.map((article) => (
+                {responseArticle.articles.map((article) => (
                   <li key={article.id} className="dark:bg-evil">
                     <Link
                       to={`/article/${article.id}`}
