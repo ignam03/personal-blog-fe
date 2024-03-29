@@ -24,8 +24,12 @@ export const deleteArticleRequest = (
 ) => clientAxios.delete(`/articles/${id}`, config);
 export const fetchMyArticlesRequest = (
   config: { headers: { Authorization: string } },
-  limit?: number
+  page?: number,
+  size?: number
 ) => {
-  const res = clientAxios.get(`/articles/my-articles?limit=${limit}`, config);
+  const res = clientAxios.get(
+    `/articles/my-articles?page=${page}&size=${size}`,
+    config
+  );
   return res;
 };

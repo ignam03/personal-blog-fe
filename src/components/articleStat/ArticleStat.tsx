@@ -3,9 +3,9 @@ export const ArticleStat = ({
   totalComments,
   totalAddons,
 }: {
-  totalArticles: number;
-  totalComments: number;
-  totalAddons: number;
+  totalArticles?: number;
+  totalComments?: number;
+  totalAddons?: number;
 }) => {
   return (
     <>

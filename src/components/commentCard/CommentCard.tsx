@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { useComment } from "../../context/CommentContext";
-import { UserType } from "../../types/userType";
-import { fetchMyProfileRequest } from "../../api/user";
+import { store } from "../../redux/store";
 
 type ICommentCard = {
   comment: {
@@ -19,15 +17,8 @@ type ICommentCard = {
 export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
   const { content, id, author } = comment;
   const { deleteComment } = useComment();
-  const [myProfile, setMyProfile] = useState<UserType | null>(null);
-
-  useEffect(() => {
-    const user = async () => {
-      const res = await fetchMyProfileRequest();
-      setMyProfile(res);
-    };
-    user();
-  });
+  // const [myProfile, setMyProfile] = useState<UserType | null>(null);
+  const user = store.getState().user;
   return (
     <div className="container mx-auto">
       <article className="rounded-xl border-2 border-gray-100 bg-white m-2 container ">
@@ -88,7 +79,7 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
           </div>
         </div>
 
-        {author?.id === myProfile?.id ? (
+        {author?.userName === user?.userName ? (
           <>
             <div className="flex justify-end">
               <strong className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-red-600 px-3 py-1.5 text-white">

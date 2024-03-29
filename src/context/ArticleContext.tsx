@@ -17,7 +17,7 @@ type contextArticle = {
   fetchArticle: (id: number) => void;
   deleteArticle: (id: number) => void;
   updateArticle: (id: number, article: ArticleType) => void;
-  fetchMyArticles: (limit?: number) => void;
+  fetchMyArticles: (page?: number, size?: number) => void;
   articles: [] | ArticleType[];
   responseArticle: ArticleResponse | null;
   article: ArticleType | null;
@@ -115,7 +115,7 @@ export const ArticleProvider = ({ children }: Props) => {
     }
   };
 
-  const fetchMyArticles = async (limit?: number) => {
+  const fetchMyArticles = async (page?: number, size?: number) => {
     try {
       const token = localStorage.getItem("token");
       const config = {
@@ -124,11 +124,11 @@ export const ArticleProvider = ({ children }: Props) => {
           Authorization: `Bearer ${token}`,
         },
       };
-      const res = await fetchMyArticlesRequest(config, limit);
+      const res = await fetchMyArticlesRequest(config, page, size);
       if (res.status === 200) setArticles(res.data);
       const totalComments = () => {
         let total = 0;
-        res.data.forEach((article: ArticleType) => {
+        res.data.articles.forEach((article: ArticleType) => {
           total += article.comments.length;
         });
         return total;
