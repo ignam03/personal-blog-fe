@@ -9,15 +9,17 @@ import {
   updateArticleRequest,
 } from "../api/articles";
 import { useNotification } from "./NotificationContext";
+import { ArticleResponse } from "../types/Response";
 
 type contextArticle = {
   saveArticle: (article: ArticleType) => void;
-  fetchArticles: (limit?: number) => void;
+  fetchArticles: (page?: number, size?: number) => void;
   fetchArticle: (id: number) => void;
   deleteArticle: (id: number) => void;
   updateArticle: (id: number, article: ArticleType) => void;
   fetchMyArticles: (limit?: number) => void;
   articles: [] | ArticleType[];
+  responseArticle: ArticleResponse | null;
   article: ArticleType | null;
   totalComments: number;
 };
@@ -49,6 +51,8 @@ export const ArticleProvider = ({ children }: Props) => {
   const [article, setArticle] = useState(null);
   const { getError, getSuccess } = useNotification();
   const [totalComments, setTotalComments] = useState(0);
+  const [responseArticle, setResponseArticle] =
+    useState<ArticleResponse | null>(null);
 
   const saveArticle = async (article: ArticleType) => {
     try {
@@ -72,7 +76,7 @@ export const ArticleProvider = ({ children }: Props) => {
     }
   };
 
-  const fetchArticles = async (limit?: number) => {
+  const fetchArticles = async (page?: number, size?: number) => {
     try {
       // const token = localStorage.getItem("token");
       // if (!token) {
@@ -84,8 +88,9 @@ export const ArticleProvider = ({ children }: Props) => {
       //     Authorization: `Bearer ${token}`,
       //   },
       // };
-      const res = await fetchArticlesRequest(limit);
+      const res = await fetchArticlesRequest(page, size);
       setArticles(res.data);
+      setResponseArticle(res.data);
     } catch (error) {
       console.log(error);
       setArticles([]);
@@ -180,6 +185,7 @@ export const ArticleProvider = ({ children }: Props) => {
     updateArticle,
     article,
     totalComments,
+    responseArticle,
   };
 
   return (

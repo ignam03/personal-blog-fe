@@ -7,8 +7,8 @@ export const createArticle = (
     headers: { Authorization: string };
   }
 ) => clientAxios.post(`/articles`, article, config);
-export const fetchArticlesRequest = (limit?: number) =>
-  clientAxios.get(`/articles`, { params: { limit } });
+export const fetchArticlesRequest = (page?: number, size?: number) =>
+  clientAxios.get(`/articles`, { params: { page, size } });
 export const fetchArticleRequest = (
   id: number,
   config: { headers: { Authorization: string } }
