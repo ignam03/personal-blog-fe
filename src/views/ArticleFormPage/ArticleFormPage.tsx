@@ -40,7 +40,6 @@ export const ArticlesFormPage = () => {
       updateArticle(Number(params.id), data);
       navigate("/articles");
     } else {
-      console.log("data", data);
       saveArticle(data);
       navigate("/articles");
     }

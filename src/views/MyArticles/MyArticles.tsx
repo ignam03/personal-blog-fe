@@ -24,7 +24,7 @@ export const MyArticles = () => {
   return (
     <section className="m-auto flex w-full max-w-screen-2xl flex-col gap-12 px-6 py-12 md:px-16 2xl:px-32 2xl:py-16">
       <ArticleStat
-        totalArticles={responseArticle?.totalItems}
+        totalArticles={responseArticle?.articles.length}
         totalComments={totalComments}
         totalAddons={totalAddons}
       />

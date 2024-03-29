@@ -133,6 +133,7 @@ export const ArticleProvider = ({ children }: Props) => {
         });
         return total;
       };
+      setResponseArticle(res.data);
       setTotalComments(totalComments());
     } catch (error) {
       setArticles([]);
