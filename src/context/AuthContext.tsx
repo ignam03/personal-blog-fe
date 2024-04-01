@@ -5,6 +5,7 @@ import {
   loginRequest,
   logoutRequest,
   meRequest,
+  registerGoogleRequest,
   registerRequest,
 } from "../api/auth";
 import { LoginType } from "../types/loginType";
@@ -22,9 +23,11 @@ type contextAth = {
   singUp: (user: RegisterType) => void;
   singIn: (user: LoginType) => void;
   logout: () => void;
+  signInWithGoogle: (body: any) => void;
   confirmAccount: (token?: string) => void;
   user: RegisterType | null;
   isAuthenticated: boolean;
+  setIsAuthenticated: (value: boolean) => void;
   loading: boolean;
   errors: null;
 };
@@ -76,7 +79,7 @@ export const AuthProvider = ({ children }: Props) => {
       //localStorage.setItem("token", res.data.token);
       //setUser(res.data.user);
       //setIsAuthenticated(true);
-      return res.data.user;
+      return { user: res.data.user, token: res.data.token };
     } catch (error: any) {
       console.log(error.response.data);
       setErrors(error.response.data);
@@ -100,9 +103,6 @@ export const AuthProvider = ({ children }: Props) => {
 
   const logout = async () => {
     try {
-      localStorage.removeItem("token");
-      setUser(null);
-      setIsAuthenticated(false);
       const token = localStorage.getItem("token");
       const config = {
         headers: {
@@ -111,6 +111,9 @@ export const AuthProvider = ({ children }: Props) => {
         },
       };
       await logoutRequest(config);
+      localStorage.removeItem("token");
+      setUser(null);
+      setIsAuthenticated(false);
     } catch (error) {
       console.error(error);
       setUser(null);
@@ -123,6 +126,22 @@ export const AuthProvider = ({ children }: Props) => {
       return res;
     } catch (error: any) {
       console.log(error.response.data.message);
+    }
+  };
+
+  const signInWithGoogle = async (body: any) => {
+    try {
+      const res = await registerGoogleRequest(body);
+      setUser(res.data.user);
+      dispatch(setProfileUser(res.data.user));
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userName", res.data.user.userName);
+      localStorage.setItem("profileImage", res.data.user.profileImage);
+      setIsAuthenticated(true);
+      return res;
+    } catch (error: any) {
+      console.log(error.response.data);
+      setErrors(error.response.data);
     }
   };
 
@@ -175,6 +194,8 @@ export const AuthProvider = ({ children }: Props) => {
         errors,
         logout,
         confirmAccount,
+        signInWithGoogle,
+        setIsAuthenticated,
       }}
     >
       {children}

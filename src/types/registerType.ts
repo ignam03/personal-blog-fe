@@ -4,4 +4,7 @@ export interface RegisterType {
   email: string;
   password: string;
   profileImage?: string;
+  isActive?: boolean;
+  externalProvider?: boolean;
+  provider?: string;
 }

@@ -84,7 +84,7 @@ export const Dropdown = () => {
                       onClick={(e: any) => {
                         e.preventDefault();
                         logout();
-                        navigate("/articles");
+                        navigate("/login");
                       }}
                     >
                       Sign out

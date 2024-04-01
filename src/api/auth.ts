@@ -22,3 +22,6 @@ export const ConfirmAccountRequest = async (token?: string) => {
 export const forgotPasswordRequest = async (email: string) => {
   return clientAxios.post(`/users/forgot-password`, email);
 };
+export const registerGoogleRequest = async (body: any) => {
+  return clientAxios.post(`/auth/google/`, body);
+};

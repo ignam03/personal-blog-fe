@@ -7,5 +7,6 @@ export interface CommentType {
     id?: number;
     userName?: string;
     profileImage?: string;
+    biography?: string;
   }
 }

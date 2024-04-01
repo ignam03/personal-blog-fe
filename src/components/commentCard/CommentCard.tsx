@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useComment } from "../../context/CommentContext";
 import { store } from "../../redux/store";
+import { ProfileCard } from "../profileCard/ProfileCard";
 
 type ICommentCard = {
   comment: {
@@ -11,14 +13,26 @@ type ICommentCard = {
       id?: number;
       userName?: string;
       profileImage?: string;
+      biography?: string;
     };
   };
 };
+
 export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
   const { content, id, author } = comment;
   const { deleteComment } = useComment();
+  const [isHovering, setIsHovering] = useState(false);
   // const [myProfile, setMyProfile] = useState<UserType | null>(null);
   const user = store.getState().user;
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
   return (
     <div className="container mx-auto">
       <article className="rounded-xl border-2 border-gray-100 bg-white m-2 container ">
@@ -31,14 +45,13 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
             />
           </a>
 
-          <div>
+          <div className="grow">
             {/* <h3 className="font-medium sm:text-lg">
             <a href="#" className="hover:underline">
               {" "}
               Question about Livewire Rendering and Alpine JS{" "}
             </a>
           </h3> */}
-
             <p className="line-clamp-2 text-sm text-gray-700">{content}</p>
 
             <div className="mt-2 sm:flex sm:items-center sm:gap-2">
@@ -60,22 +73,31 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
 
                 <p className="text-xs">14 comentarios</p>
               </div>
-
               <span className="hidden sm:block" aria-hidden="true">
                 &middot;
               </span>
-
-              <p className="hidden sm:block sm:text-xs sm:text-gray-500">
+              <p
+                className="hidden sm:block sm:text-xs sm:text-gray-500"
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
+              >
                 Posted by
                 <a
                   href="#"
                   className="font-medium underline hover:text-gray-700"
                 >
-                  {" "}
                   {author?.userName}{" "}
                 </a>
               </p>
             </div>
+            {isHovering && (
+              <ProfileCard
+                userName={author?.userName}
+                profileImage={author?.profileImage}
+                //id={author!.id}
+                biography={author?.biography}
+              />
+            )}
           </div>
         </div>
 
@@ -107,7 +129,14 @@ export const CommentCard: React.FC<ICommentCard> = ({ comment }) => {
             </div>
           </>
         ) : (
-          <></>
+          <div className="container flex justify-end">
+            <button
+              //onClick={() => deleteComment(id as number)}
+              className="rounded-ee-xl rounded-ss-xl bg-blue-600 px-7 py-3 text-white"
+            >
+              Responder
+            </button>
+          </div>
         )}
       </article>
     </div>

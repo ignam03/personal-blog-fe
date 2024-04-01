@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { GoogleAuth } from "../../components/googleAuth/GoogleAuth";
 
 type ILogin = {
   username: string;
@@ -16,11 +17,20 @@ export const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<ILogin>();
-  const { singIn, isAuthenticated, errors: SignInErrors } = useAuth();
+  const {
+    singIn,
+    isAuthenticated,
+    errors: SignInErrors,
+  } = useAuth();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<ILogin> = (data) => {
     singIn(data);
   };
+
+  // const handleGoogleLogin: SubmitHandler<any> = async () => {
+  //   const res = await signInWithGoogle();
+  //   console.log(res);
+  // };
 
   useEffect(() => {
     if (isAuthenticated) navigate("/articles");
@@ -101,13 +111,15 @@ export const LoginPage = () => {
               </div>
             </div>
 
-            <div>
+            <div className="flex justify-between space-x-2">
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Iniciar sesión
               </button>
+               <GoogleAuth /> 
+              {/* <button onClick={handleGoogleLogin}>google</button> */}
             </div>
           </form>
 
